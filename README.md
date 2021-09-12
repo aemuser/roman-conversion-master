@@ -1,3 +1,16 @@
+# Point Mechanism
+• Find and reference a specification for Roman numerals online. Wikipedia is acceptable.
+• Provide clear and concise documentation:
+README.md with:
+How to build and run your project.
+Your engineering and testing methodology
+Your packaging layout
+Dependency attribution
+Inline documentation in your source code
+• Tests
+• Error Handling
+
+
 # springboot-sample-app
 
 [![Build Status]()]()
