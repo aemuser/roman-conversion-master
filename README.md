@@ -1,14 +1,23 @@
 # Point Mechanism
 • Find and reference a specification for Roman numerals online. Wikipedia is acceptable.
-• Provide clear and concise documentation:
+• Provide clear and concise documentation:  
+
 README.md with:
-How to build and run your project.
-Your engineering and testing methodology
-Your packaging layout
-Dependency attribution
+
+• How to build and run your project.
+• Your engineering and testing methodology
+• Your packaging layout
+• Dependency attribution
 Inline documentation in your source code
 • Tests
 • Error Handling
+
+## Extension
+
+Include additional DevOps capabilities in your project to represent how you
+would prepare your project for ease of operation in a production environment (e.g. metrics,
+monitoring, logging, etc.). Add tooling to build a runnable Docker container for your service if
+you are familiar with Docker.
 
 
 # springboot-sample-app
