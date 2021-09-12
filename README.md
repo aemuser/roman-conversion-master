@@ -19,6 +19,15 @@ would prepare your project for ease of operation in a production environment (e.
 monitoring, logging, etc.). Add tooling to build a runnable Docker container for your service if
 you are familiar with Docker.
 
+# Design Considerations
+
+In terms of performance, if we do want to consider cache - the consideration is two folds 
+
+1) Since the input values are rage bound - should we may have a cache of the entire valid input integers vs 
+2) Maintain a cache of the input values that we have processed - i.e. cache is request based 
+
+Went with #2.
+
 
 # springboot-sample-app
 
