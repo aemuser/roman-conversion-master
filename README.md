@@ -23,7 +23,9 @@ mvn spring-boot:run
 mvn spring-boot:run -Dapp.profiles=test
 java -jar target/roman-conversion-0.0.1-SNAPSHOT.jar
 ```
+## Swagger UI 
 
+http://localhost:8081/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
 
 To chek the health of the application, 1) use springboot provided [actuator](http://localhost:8080/actuator/health) or 2) App defined [HealthCheck](http://localhost:8080/)
 ## Deploying the application
