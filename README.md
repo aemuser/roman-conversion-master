@@ -61,6 +61,17 @@ mvn spring-boot:run
 mvn spring-boot:run -Dapp.profiles=test
 java -jar target/roman-conversion-0.0.1-SNAPSHOT.jar
 ```
+
+## Running the application in Docker
+Depoly in docker locally by installing docker desktop and cd to projects directory (where DockerFile is present) and run the bellow commands
+
+```shell
+docker login
+
+docker build --tag=roman-conversion:latest .
+docker run -p 8081:80 romain-conversion
+```
+
 ## Swagger UI 
 
 http://localhost:8081/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
