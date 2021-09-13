@@ -12,6 +12,7 @@ Inline documentation in your source code
 • Tests
 • Error Handling
 
+
 ## Extension
 
 Include additional DevOps capabilities in your project to represent how you
@@ -25,8 +26,14 @@ In terms of performance, if we do want to consider cache - the consideration is 
 
 1) Since the input values are rage bound - should we may have a cache of the entire valid input integers vs 
 2) Maintain a cache of the input values that we have processed - i.e. cache is request based 
+3) Have a TreeMap - why a treeMap, because it has the floor method ...also added an annotation to load the treeMap only on startup ( need this to happen only  once) 
 
 Went with #2.
+
+
+- have a scheduled cache evict ( may be) 
+- tried to use the default cache that spring provides  ( then realized if we need some way to evit the cache / set a TTL ), we might need to have some sort of scheduler or an API to help clear the cache on demand (something like an AEM dispatcher flush ) 
+
 
 
 # Roman-Conversion Application
