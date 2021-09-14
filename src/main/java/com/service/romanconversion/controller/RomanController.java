@@ -50,7 +50,7 @@ public class RomanController {
     @ResponseBody
     private String handleConstraintViolationException(ConstraintViolationException exception) {
         log.error("ConstraintViolationException ::", exception);
-        return "Invalid Input. Please verify that the input parameter is an integer between 1 and 3999";
+        return "Invalid Input. Please verify that the input parameter is an integer between 1 and 3999.";
     }
 
     /**
@@ -63,6 +63,6 @@ public class RomanController {
     @ResponseBody
     private String handleNumberFormatException(NumberFormatException exception) {
         log.error("NumberFormatException ::", exception);
-        return "Invalid Input. Please verify that the input parameter is an integer between 1 and 3999";
+        return "Invalid Input. Please verify that the input parameter is an integer.";
     }
 }
