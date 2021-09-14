@@ -67,16 +67,17 @@ docker run -p 8081:80 romain-conversion
 
 ## Swagger UI 
 
+List of all available end points : 
+
 http://localhost:8081/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
 
-To chek the health of the application, 1) use springboot provided [actuator](http://localhost:8080/actuator/health) or 2) App defined [HealthCheck](http://localhost:8080/)
 
 ## Code Quality
 - Sonar Lint  / Sonar Qube plugins for static code analysis
 - Code coverage plugins to measure code coverage 
 
 # Monitoring & Metrics 
-- Relying on springboot provided [Health](http://localhost:8081/actuator/health) [Metrics](http://localhost:8081/actuator/metrics) end points. 
+- Relying on springboot provided [Health](http://localhost:8081/actuator/health) and [Metrics](http://localhost:8081/actuator/metrics) end points. 
 - These management endpoints have been enabled in application.properties. 
 
 For metrics, Spring Boot Actuator provides an auto-configuration for Micrometer, that serves as ab application metrics facade with support for various monitoring systems. We may use any of the supported systems,
