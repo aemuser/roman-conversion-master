@@ -1,40 +1,47 @@
-# Point Mechanism
-• Find and reference a specification for Roman numerals online. Wikipedia is acceptable.
-• Provide clear and concise documentation:  
+# Objective
+Expose a REST End Point , which converts a given integer input to it's equivalent Roman Numeral Literal
 
-README.md with:
+## Roman Numeral Reference
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
-• How to build and run your project.
-• Your engineering and testing methodology
-• Your packaging layout
-• Dependency attribution
-Inline documentation in your source code
-• Tests
-• Error Handling
+```shell
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+```
 
+Roman numerals are written largest to smallest from left to right. 
+There are some special cases - No numeral can be repeated in succession more than thrice. Thereby, for example - the number four is written as IV and not IIII.
+Because the one is on the left of five, we subtract it making four. 
 
-## Extension
+The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
 
-Include additional DevOps capabilities in your project to represent how you
-would prepare your project for ease of operation in a production environment (e.g. metrics,
-monitoring, logging, etc.). Add tooling to build a runnable Docker container for your service if
-you are familiar with Docker.
+I can be placed before V (5) and X (10) to make 4 and 9.
+X can be placed before L (50) and C (100) to make 40 and 90.
+C can be placed before D (500) and M (1000) to make 400 and 900.
 
-# Design Considerations
+## Considerations
 
 In terms of performance, if we do want to consider cache - the consideration is two folds 
 
-1) Since the input values are rage bound - should we may have a cache of the entire valid input integers vs 
-2) Maintain a cache of the input values that we have processed - i.e. cache is request based 
-3) Have a TreeMap - why a treeMap, because it has the floor method ...also added an annotation to load the treeMap only on startup ( need this to happen only  once) 
+1) Since the input values are rage bound ( 1 to 3999) - should we maybe have a cache of the entire valid input integers (or)
+2) Maintain a cache of the input values that we have processed - i.e. cache is request based ( the Result for a given input is cached) - chose this way.
+3) Have a TreeMap, load all the reference Roman Numerals ( this will be a one time activity, in our case on start up ). Treemap has a handy floor method.
+4) The side effect of using Spring's default Cache ( vs may be Redis or Caffiene or other cache mechanisms) was either do a 
+- Scheduled cache evict
+- An API end point to help clear the cache on demand. (chose this way)
+- Tested whether caching is happening at all by introducing a time delay.
+- 
+5) Time permitting would like to add a kill switch or a feature flag to enable / disable the service (from a configuration)
 
-Went with #2.
-
-
-- have a scheduled cache evict ( may be) 
-- tried to use the default cache that spring provides  ( then realized if we need some way to evit the cache / set a TTL ), we might need to have some sort of scheduler or an API to help clear the cache on demand (something like an AEM dispatcher flush ) 
-
-
+## Code Quality 
+- Sonar Lint  / Sonar Qube plugins on local for static code analysis
+- Intellij code coverage plugins to measure code coverage 
 
 # Roman-Conversion Application
 

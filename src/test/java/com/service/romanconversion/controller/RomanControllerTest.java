@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 /*
   Test Driven Development approach
@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RomanControllerTest {
+class RomanControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -51,20 +51,22 @@ public class RomanControllerTest {
                 .andExpect(content().string("{\"input\":12,\"output\":\"XII\"}"));
     }
 
+    /**
+     * Test by sending along various invalid inputs
+     * @throws Exception e
+     */
     @Test
-    void test_RomanService_VariousInputs() throws Exception {
+    void test_RomanService_VariousInvalidInputs() throws Exception {
         this.mockMvc.perform(get(REQUEST_STRING))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest()); //Null
 
         this.mockMvc.perform(get(REQUEST_STRING+"abc"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest()); //Alpha
 
         this.mockMvc.perform(get(REQUEST_STRING+"!@#!%!@$#"))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest()); //Special Char
 
         this.mockMvc.perform(get(REQUEST_STRING+"             "))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest()); // Spaces
     }
-
-
 }

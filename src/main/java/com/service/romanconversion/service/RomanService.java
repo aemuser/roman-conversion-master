@@ -3,35 +3,38 @@ package com.service.romanconversion.service;
 import com.service.romanconversion.model.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
-  This service class contains any logic tied to Roman conversion
-  future enhancements - may be use Spring Boot Cache / In Memory Cache for better performance.
+  This service class hosts the logic tied to Roman conversion
  */
 @Service
 @Slf4j
 public class RomanService {
 
-    private static final TreeMap<Integer,String> romanLiteralMap =new TreeMap<>();
+    private final TreeMap<Integer,String> romanLiteralMap =new TreeMap<>();
 
     /**
      * Function To Convert Input(integer) to Roman Numeral
-     * @param inputVal
+     * @param inputVal integer
      * @return Result
      */
-    public Result getRomanValueForInteger(final int inputVal){
-        log.debug("getRomanValueForInteger :: Input integer value {} ", inputVal);
+    @Cacheable("results")
+    public Result getRomanValueForInteger(final int inputVal) throws NumberFormatException {
+        log.debug("Calling getRomanValueForInteger for input {}", inputVal);
         int inputNum=inputVal;
         StringBuilder romanLiteral= new StringBuilder();
         while(inputNum>0) {
             int key= romanLiteralMap.floorKey(inputNum);
-            romanLiteral=romanLiteral.append(romanLiteralMap.get(key));
+            romanLiteral.append(romanLiteralMap.get(key));
             inputNum=inputNum-key;
         }
+        log.debug("getRomanValueForInteger :: Input integer value {} ", romanLiteral);
         return new Result(inputVal,romanLiteral.toString());
     }
 
@@ -55,5 +58,13 @@ public class RomanService {
         romanLiteralMap.put(900,"CM");
         romanLiteralMap.put(1000,"M");
         log.debug("executeOnStartUp :: romanLiteralMap has been populated {}", romanLiteralMap.size());
+    }
+
+    /**
+     * Getter
+     * @return romanLiteralMap
+     */
+    public SortedMap<Integer, String> getRomanLiteralMap() {
+        return romanLiteralMap;
     }
 }
