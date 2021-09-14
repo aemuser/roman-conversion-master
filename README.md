@@ -1,4 +1,4 @@
-# Roman-Conversion Application Objective
+# Objective
 Expose a REST End Point , which converts a given integer input to it's equivalent Roman Numeral Literal
 
 ## Roman Numeral Reference
@@ -89,27 +89,25 @@ included in application.properties are sample configurations for New Relic.
 ed spring-boot-actuator module, that provides all of Spring Boot’s production-ready features.
 
 ```shell
-<dependencies>
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
-</dependencies>
 ```
 Spring boot - Swagger UI dependency 
 
 ```shell
-	<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.5.2</version>
-		</dependency>
+    <dependency>
+        <groupId>org.springdoc</groupId>
+	<artifactId>springdoc-openapi-ui</artifactId>
+	<version>1.5.2</version>
+    </dependency>
 ```
 Thyme leaf for custom error.html
 
 ```shell
     <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-thymeleaf</artifactId>
+     </dependency>
 ```
