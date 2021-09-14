@@ -86,7 +86,7 @@ included in application.properties are sample configurations for New Relic.
 
 # Dependencies
 
-ed spring-boot-actuator module, that provides all of Spring Boot’s production-ready features.
+Used spring-boot-actuator module, that provides all of Spring Boot’s production-ready features.
 
 ```shell
     <dependency>
