@@ -71,6 +71,8 @@ List of all available end points :
 
 http://localhost:8081/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
 
+## Package Structure 
+Followed the MVC standard, java classes segrated into packages that host model,service and controller. 
 
 ## Code Quality
 - Sonar Lint  / Sonar Qube plugins for static code analysis
